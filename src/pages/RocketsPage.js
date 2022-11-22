@@ -9,20 +9,11 @@ const RocketsPage = () => {
   useEffect(() => {
     dispatch(fetchRockets());
   }, [dispatch]);
-  const rocketArr = [
-    {
-      name: 'rock1',
-      id: 1,
-    },
-    {
-      name: 'rock2',
-      id: 2,
-    },
-  ];
+  const rocketArr = useSelector((state) => state.rockets);
 
   return (
     <div>
-      <ul>
+      <ul className="all-list">
         {
                 rocketArr.map((eachRocket) => (
                   <Rocket key={eachRocket.id} rocket={eachRocket} />

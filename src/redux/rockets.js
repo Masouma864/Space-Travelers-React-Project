@@ -20,6 +20,19 @@ export const rocketReducer = (state = rocketArr, action) => {
 export const fetchRockets = createAsyncThunk(FETCH__ROCKET, async (post, { dispatch }) => {
   const response = await fetch(fetchUrl);
   const data = await response.json();
+
+  const dataArr = [];
+  data.forEach((each) => {
+    dataArr.push(
+      {
+        id: each.id,
+        rocket_name: each.rocket_name,
+        description: each.description,
+        flickr_images: each.flickr_images,
+      },
+    );
+  });
+  console.log(dataArr);
   dispatch({
     type: FETCH__ROCKET,
     allRckts: data,
