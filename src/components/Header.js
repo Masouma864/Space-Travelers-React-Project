@@ -33,3 +33,4 @@ const Header = () => (
     </ul>
   </div>
 );
+export default Header;
