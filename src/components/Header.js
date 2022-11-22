@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom';
 import planet from '../images/planet.png';
 
 const Header = () => (
-    <div className='header-container'>
-        <div className="left-header">
-            <img src={planet} alt="planetImage" width="60px" />
-            <h3>Space Travelers Hub</h3>
-        </div
-        <ul className="flex">
+  <div className="flex justify-between items-center ">
+    <div className="flex items-center">
+      <img src={planet} alt="planetImage" width="60px" />
+      <h3>Space Travelers Hub</h3>
+    </div>
+    <ul className="flex">
       <li>
         <NavLink
           to="/"
@@ -41,5 +41,4 @@ const Header = () => (
       </li>
     </ul>
   </div>
-
 );
