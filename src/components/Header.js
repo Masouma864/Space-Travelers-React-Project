@@ -10,21 +10,14 @@ const Header = () => (
     </div>
     <ul className="flex">
       <li>
-        <NavLink
-          to="/"
-          style={(isActive) => ({
-            textDecoration: isActive ? 'underline' : 'none',
-          })}
-        >
+        <NavLink to="/" className="rockets" >
           Rockets
         </NavLink>
       </li>
       <li>
         <NavLink
           to="/missionspage"
-          style={(isActive) => ({
-            textDecoration: isActive ? 'underline' : 'none',
-          })}
+         className="missions"
         >
           Missions
         </NavLink>
@@ -32,9 +25,7 @@ const Header = () => (
       <li>
         <NavLink
           to="/myprofilepage"
-          style={(isActive) => ({
-            textDecoration: isActive ? 'underline' : 'none',
-          })}
+         className="profile"
         >
           My Profile
         </NavLink>
