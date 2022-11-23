@@ -1,22 +1,34 @@
-const Missionscard = () => (
-  <tr>
-    <td>Thaicom</td>
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { unjoinMission, joinMission } from '../redux/missions/MissionsSlice';
 
-    <td>
-      Thaicom is the name of a series of communications satellites
-      operated from Thailand, and also the name of Thaicom Public Company Limited, which
-      is the company that owns and operates the Thaicom satellite fleet and other
-      telecommunication businesses in Thailand and throughout the Asia-Pacific region.
+const Missioncard = ({
+  missionname, description, id, missionjoin,
+}) => {
+  const dispatch = useDispatch();
+  const missionSwitchHandler = (event) => {
+    dispatch(joinMission(event.target.id));
+  };
 
-    </td>
-    <td>
-      <div className="td-status">Not A Member</div>
-    </td>
-    <td className="td-btn">
-      <button type="submit" name="join" id="join" className="btn">Leave Mission</button>
-    </td>
-  </tr>
+  const unjoinswitchhandler = (event) => {
+    dispatch(unjoinMission(event.target.id));
+  };
+  return (
 
-);
+    <tr>
+      <td>{missionname}</td>
 
-export default Missionscard;
+      <td>{description}</td>
+      <td className="col3">
+        {missionjoin === false ? (<span className="badge">Not A Member</span>) : (<span className="badge">Active Member</span>)}
+      </td>
+      <td className="col4">
+        {missionjoin === false ? (<button className="join-btn" type="submit" id={id} onClick={missionSwitchHandler}>Join Mision</button>) : (<button className="join-btn" type="submit" id={id} onClick={unjoinswitchhandler}>Leave Mission</button>)}
+      </td>
+    </tr>
+
+  );
+};
+
+export default Missioncard;
