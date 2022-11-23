@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Rocket from '../components/RocketItem';
 import { fetchRockets } from '../redux/rockets';
+import style from '../components/css/RocketItem.module.css';
 
 const RocketsPage = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const RocketsPage = () => {
 
   return (
     <div>
-      <ul className="all-list">
+      <ul className={style.allList}>
         {
                 rocketArr.map((eachRocket) => (
                   <Rocket key={eachRocket.id} rocket={eachRocket} />

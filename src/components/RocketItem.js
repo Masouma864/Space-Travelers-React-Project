@@ -1,28 +1,28 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import './css/RocketItem.css';
+import style from './css/RocketItem.module.css';
 import { reserve, cancleRes } from '../redux/rockets';
 
 function Rocket(props) {
   const dispatch = useDispatch();
   const allRocket = { props };
   const eachRocket = allRocket.props.rocket;
+
   return (
-    <li className="list">
-      <figure className="img-div">
-        <img src={eachRocket.flickr_images[0]} alt="Rocket" className="each-img" />
+    <li className={style.list}>
+      <figure className={style.imgDiv}>
+        <img src={eachRocket.flickr_images[0]} alt="Rocket" className={style.eachImg} />
       </figure>
-      <article>
+      <article className={style.details}>
         <h2>{eachRocket.rocket_name}</h2>
         <p>
-          <span>
-            {eachRocket.reserved === false ? '' : 'Reserved'}
-          </span>
+          {eachRocket.reserved ? <span className={style.badge}>reserved</span> : null}
           {eachRocket.description}
         </p>
         <button
           type="button"
-          style={{ backgroundColor: `${eachRocket.reserved === true ? 'grey' : '#007bff9c'}` }}
+          className={eachRocket.reserved ? `${style.cancelBtn}` : `${style.reserveBtn}`}
           onClick={() => {
             if (!eachRocket.reserved) {
               dispatch(reserve(eachRocket.id));
@@ -31,7 +31,7 @@ function Rocket(props) {
             }
           }}
         >
-          {eachRocket.reserved === true ? 'Cancel Reservations' : 'Reserve Rocket'}
+          {eachRocket.reserved ? 'Cancel Reservations' : 'Reserve Rocket'}
         </button>
       </article>
     </li>
