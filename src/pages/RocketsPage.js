@@ -1,28 +1,26 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import RocketItem from '../components/RocketItem';
-import { fetchRockets } from '../redux/rockets/rockets';
+import Rocket from '../components/RocketItem';
+import { fetchRockets } from '../redux/rockets';
+import style from '../components/css/RocketItem.module.css';
 
 const RocketsPage = () => {
   const dispatch = useDispatch();
-  const allRockets = useSelector((state) => state.rocket);
+
   useEffect(() => {
     dispatch(fetchRockets());
   }, [dispatch]);
-
-  const rocketElements = allRockets.map((rocket) => (
-    <RocketItem
-      key={rocket.id}
-      title={rocket.title}
-      id={rocket.id}
-      image={rocket.image}
-      description={rocket.description}
-    />
-  ));
+  const rocketArr = useSelector((state) => state.rockets);
 
   return (
     <div>
-      <ul>{rocketElements}</ul>
+      <ul className={style.allList}>
+        {
+                rocketArr.map((eachRocket) => (
+                  <Rocket key={eachRocket.id} rocket={eachRocket} />
+                ))
+            }
+      </ul>
     </div>
   );
 };

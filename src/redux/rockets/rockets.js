@@ -1,55 +1,66 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 
-// Actions
-const FETCH_ROCKETS = 'FETCH_ROCKETS';
+const FETCH__ROCKET = 'Space-Travelers-React-Project/src/redux/rockets/FETCH__ROCKET';
+const fetchUrl = 'https://api.spacexdata.com/v3/rockets';
 
-// state data
-const initialState = [];
-
-const baseUrl = 'https://api.spacexdata.com/v3/rockets';
-
-// async function fetch() {
-//   try {
-//     const response = await axios.get(baseUrl);
-//     const rockets = response.data;
-//     const res = Object.keys(rockets).map((id) => ({
-//       id: rockets[id].id,
-//       title: rockets[id].rocket_name,
-//       image: rockets[id].flickr_images[0],
-//       decription: rockets[id].description,
-//     }));
-//     console.log(res[1].id);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
-// fetch();
-
+const RESERVE__ROCKET = 'Space-Travelers-React-Project/src/redux/rockets/RESERVE__ROCKET';
+const CANCLE__RESERVE = 'Space-Travelers-React-Project/src/redux/rockets/CANCLE__RESERVE';
 // Reducers
 
-const rocketReducer = (state = initialState, action = {}) => {
+const rocketArr = [];
+
+export const rocketReducer = (state = rocketArr, action) => {
   switch (action.type) {
-    case 'FETCH_ROCKETS/fulfilled': {
-      return action.payload;
-    }
+    case FETCH__ROCKET:
+      return action.allRckts;
+    case RESERVE__ROCKET:
+      return state.map((rocket) => {
+        if (rocket.id !== action.id) return rocket;
+        return { ...rocket, reserved: true };
+      });
+    case CANCLE__RESERVE:
+      return state.map((rocket) => {
+        if (rocket.id !== action.id) return rocket;
+        return { ...rocket, reserved: false };
+      });
     default:
       return state;
   }
 };
 
-// action creators
+// Action to fetch Rocket data
 
-export const fetchRockets = createAsyncThunk(FETCH_ROCKETS, async () => {
-  const response = await axios.get(baseUrl);
-  const rockets = response.data;
-  const res = rockets.map((rocket) => ({
-    id: rocket.id,
-    title: rocket.rocket_name,
-    image: rocket.flickr_images[1],
-    description: rocket.description,
-  }));
-  return res;
+export const fetchRockets = createAsyncThunk(FETCH__ROCKET, async (post, { dispatch }) => {
+  const response = await fetch(fetchUrl);
+  const data = await response.json();
+  const dataArr = [];
+  data.forEach((each) => {
+    dataArr.push(
+      {
+        id: each.id,
+        rocket_name: each.rocket_name,
+        description: each.description,
+        flickr_images: each.flickr_images,
+        reserved: false,
+      },
+    );
+  });
+  dispatch({
+    type: FETCH__ROCKET,
+    allRckts: dataArr,
+  });
 });
 
-export default rocketReducer;
+export const reserve = (id) => (
+  {
+    type: RESERVE__ROCKET,
+    id,
+  }
+);
+
+export const cancleRes = (id) => (
+  {
+    type: CANCLE__RESERVE,
+    id,
+  }
+);
