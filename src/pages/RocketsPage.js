@@ -6,11 +6,13 @@ import style from '../components/css/RocketItem.module.css';
 
 const RocketsPage = () => {
   const dispatch = useDispatch();
+  const rocketArr = useSelector((state) => state.rockets);
 
   useEffect(() => {
-    dispatch(fetchRockets());
-  }, [dispatch]);
-  const rocketArr = useSelector((state) => state.rockets);
+    if (rocketArr.length === 0) {
+      dispatch(fetchRockets());
+    }
+  }, [dispatch, rocketArr.length]);
 
   return (
     <div>
