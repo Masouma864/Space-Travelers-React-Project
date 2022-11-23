@@ -30,7 +30,7 @@ export const rocketReducer = (state = rocketArr, action) => {
 
 // Action to fetch Rocket data
 
-export const fetchRockets = createAsyncThunk(FETCH__ROCKET, async (post, { dispatch }) => {
+const fetchRockets = createAsyncThunk(FETCH__ROCKET, async (post, { dispatch }) => {
   const response = await fetch(fetchUrl);
   const data = await response.json();
   const dataArr = [];
@@ -64,3 +64,5 @@ export const cancleRes = (id) => (
     id,
   }
 );
+
+export default fetchRockets;
