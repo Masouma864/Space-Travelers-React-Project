@@ -2,7 +2,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import style from './css/RocketItem.module.css';
-import { reserve, cancleRes } from '../redux/rockets';
+import { reserve, cancleRes } from '../redux/rockets/rockets';
 
 function Rocket(props) {
   const dispatch = useDispatch();
