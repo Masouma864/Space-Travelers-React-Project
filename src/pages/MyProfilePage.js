@@ -1,5 +1,10 @@
 import React from 'react';
+import Profile from '../components/Profile';
 
-const MyProfilePage = () => <div>MyProfilePage</div>;
+const MyProfilePage = () => (
+  <div>
+    <Profile />
+  </div>
+);
 
 export default MyProfilePage;
