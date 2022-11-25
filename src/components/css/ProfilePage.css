@@ -1,0 +1,20 @@
+.all-profile {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+}
+
+.each-profile {
+  width: 45%;
+}
+
+.each-data {
+  height: 60px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin: 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
