@@ -33,6 +33,11 @@ li {
   text-decoration: none;
 }
 
+.pofile {
+  display: flex;
+  flex-direction: row;
+}
+
 .left-header {
   display: flex;
   gap: 20px;
