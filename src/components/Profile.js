@@ -1,23 +1,27 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import './css/ProfilePage.css';
 
 function Profile() {
   const rocketArr = useSelector((state) => state.rockets);
   const reserveRckt = rocketArr.filter((each) => each.reserved === true);
 
   return (
-    <div className="profile">
-      <table className="missions">
-        <tr>My Missions</tr>
-        {/* code here */}
-      </table>
+    <div className="all-profile">
+      <div className="each-profile">
+        <h2>My Missions</h2>
 
-      <table className="rockets">
-        <tr>My Rockets</tr>
+      </div>
+      <div className="each-profile">
+        <h2>My Rockets</h2>
+
         {reserveRckt.map((res) => (
-          <tr key={res.id}>{res.rocket_name}</tr>
+
+          <p className="each-data" key={res.id}>{res.rocket_name}</p>
+
         ))}
-      </table>
+
+      </div>
     </div>
   );
 }
