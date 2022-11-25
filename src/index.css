@@ -32,9 +32,10 @@ li {
   font-size: 1.2rem;
   text-decoration: none;
 }
-.pofile{
-display: flex;
-flex-direction: row;
+
+.pofile {
+  display: flex;
+  flex-direction: row;
 }
 
 .left-header {
