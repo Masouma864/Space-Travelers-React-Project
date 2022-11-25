@@ -5,6 +5,7 @@ exports[`Header should render header correctly 1`] = `
   aria-current="page"
   class="rockets active"
   href="/"
+  style="text-decoration: underline;"
 >
   Rockets
 </a>

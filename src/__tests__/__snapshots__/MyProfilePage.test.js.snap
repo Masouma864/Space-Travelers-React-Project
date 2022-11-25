@@ -7,22 +7,22 @@ Object {
     <div>
       <div>
         <div
-          class="profile"
+          class="all-profile"
         >
-          <table
-            class="missions"
+          <div
+            class="each-profile"
           >
-            <tr>
+            <h2>
               My Missions
-            </tr>
-          </table>
-          <table
-            class="rockets"
+            </h2>
+          </div>
+          <div
+            class="each-profile"
           >
-            <tr>
+            <h2>
               My Rockets
-            </tr>
-          </table>
+            </h2>
+          </div>
         </div>
       </div>
     </div>
@@ -30,22 +30,22 @@ Object {
   "container": <div>
     <div>
       <div
-        class="profile"
+        class="all-profile"
       >
-        <table
-          class="missions"
+        <div
+          class="each-profile"
         >
-          <tr>
+          <h2>
             My Missions
-          </tr>
-        </table>
-        <table
-          class="rockets"
+          </h2>
+        </div>
+        <div
+          class="each-profile"
         >
-          <tr>
+          <h2>
             My Rockets
-          </tr>
-        </table>
+          </h2>
+        </div>
       </div>
     </div>
   </div>,
