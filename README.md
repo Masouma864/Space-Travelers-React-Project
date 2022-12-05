@@ -43,8 +43,7 @@
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-- [crypto-metric-app]
-(https://space-travelers-react-project.vercel.app/)
+- [Live Demo](https://space-travelers-react-project.vercel.app/)
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
